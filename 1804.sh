@@ -20,6 +20,7 @@ sudo apt install screen \
 	nfs-kernel-server \ 
         terminator \
 	zsh \
+	ubuntu-restricted-extras \
 	-y
 
 ###################
