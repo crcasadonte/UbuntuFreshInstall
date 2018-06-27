@@ -41,8 +41,8 @@ sudo apt-get install insync
 ##Install Dropbox##
 ###################
 
-curl -O https://www.dropbox.com/download?dl=packages/ubuntu/dropbox_2015.10.28_amd64.deb
-sudo apt install dropbox_2015.10.28_amd64.deb
+cd ~ && wget -O - "https://www.dropbox.com/download?plat=lnx.x86_64" | tar xzf -
+~/.dropbox-dist/dropboxd &
 
 ###################
 ##Install keepass##
