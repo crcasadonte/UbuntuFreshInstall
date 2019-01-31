@@ -17,7 +17,7 @@ sudo apt install screen \
 	python3-pip \
 	vagrant \
        	virtualbox \
-	nfs-kernel-server \ 
+	nfs-kernel-server \
         terminator \
 	zsh \
 	ubuntu-restricted-extras \
@@ -42,7 +42,7 @@ sudo snap install spotify
 ###############################
 
 sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys ACCAF35C
-sudo echo deb http://apt.insynchq.com/ubuntu cosmic non-free contrib >> /etc/apt/sources.list.d/insync.list
+sudo echo deb http://apt.insynchq.com/ubuntu cosmic non-free contrib | sudo tee -a /etc/apt/sources.list.d/insync.list > /dev/null
 sudo apt-get update
 sudo apt-get install insync
 
@@ -79,13 +79,13 @@ sudo apt-get install libindicator7  libappindicator1 -y
 ##Install boto3##
 #################
 
-sudo pip3 install boto3
+sudo -H pip3 install boto3
 
 ##################
 ##Install awscli##
 ##################
 
-sudo pip3 install awscli
+sudo -H pip3 install awscli
 
 ###################
 ##Install ansible##
@@ -93,6 +93,7 @@ sudo pip3 install awscli
 
 sudo apt-get install software-properties-common
 sudo apt-add-repository ppa:ansible/ansible
+sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 93C4A3FD7BB9C367
 sudo apt-get update
 sudo apt-get install ansible
 
@@ -102,6 +103,7 @@ sudo apt-get install ansible
 
 curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
 sudo mv microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg
+sudo chown root:root /etc/apt/trusted.gpg.d/microsoft.gpg
 sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list'
 sudo apt-get update
 sudo apt-get install code
@@ -135,9 +137,10 @@ sudo snap install pycharm-community --classic
 ##Packer##
 ##########
 
-curl -O https://releases.hashicorp.com/packer/1.3.3/packer_1.3.3_linux_amd64.zip
-unzip packer_1.3.3_linux_amd64.zip
+curl -O https://releases.hashicorp.com/packer/1.3.4/packer_1.3.4_linux_amd64.zip
+unzip packer_1.3.4_linux_amd64.zip
 sudo mkdir /opt/packer/
+sudo cp packer /usr/bin/
 sudo mv packer /opt/packer/
 
 #############
@@ -147,6 +150,7 @@ sudo mv packer /opt/packer/
 curl -O https://releases.hashicorp.com/terraform/0.11.11/terraform_0.11.11_linux_amd64.zip
 unzip terraform_0.11.11_linux_amd64.zip
 sudo mkdir /opt/terraform/
+sudo cp terraform /usr/bin/
 sudo mv terraform /opt/terraform/
 
 #####################
